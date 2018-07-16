@@ -1,11 +1,11 @@
 <?php
 
-require_once 'classes/Pessoa.class.php';
 require_once 'classes/Cliente.class.php';
 
 $cliente = new Cliente();
 
 $cliente->setNome('Jose');
-$cliente->setIdade(25);
+$cliente->setCpf('13215646');
+$cliente->setIdade(-14);
 
-echo $cliente->getIdade();
+echo $cliente;

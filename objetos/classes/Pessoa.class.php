@@ -6,15 +6,7 @@ abstract class Pessoa {
     protected $sexo;
     protected $idade;
 
-    /*
-    function __construct($nome, $sexo, $idade) {
-        $this->setNome($nome);
-        $this->setSexo($sexo);
-        $this->setIdade($idade);
-    }
-    */
-
-    function setNome($nome) {
+    public function setNome($nome) {
         $qtd = strlen($nome);
         if ($qtd > 1) {
             $this->nome = strtoupper($nome);
@@ -23,11 +15,11 @@ abstract class Pessoa {
         }
     }
 
-    function getNome() {
+    public function getNome() {
         return $this->nome;
     }
 
-    function setSexo($sexo) {
+    public function setSexo($sexo) {
         $sex = strtoupper($sexo);
         if ($sex != 'F') {
             $this->sexo = 'M';
@@ -36,13 +28,19 @@ abstract class Pessoa {
         }
     }
 
-    function getSexo() {
+    public function getSexo() {
         return $this->sexo;
     }
 
-    abstract function setIdade($idade);
+    public function setIdade($idade) {
+        if ($idade < 0 || $idade > 150) {
+            $this->idade = 0;
+        } else {
+            $this->idade = $idade;
+        }
+    }
 
-    function getIdade() {
+    public function getIdade() {
         return $this->idade;
     }
 

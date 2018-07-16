@@ -2,7 +2,7 @@
 
 require_once 'Cliente.class.php';
 
-class Conta {
+abstract class Conta {
 
     private $cliente;
     private $agencia;
@@ -39,6 +39,24 @@ class Conta {
 
     public function setSaldo($saldo) {
         $this->saldo = $saldo;
+    }
+
+    public abstract function saca($valor);
+
+    public function deposita($valor) {
+        if (is_numeric($valor) && $valor > 0) {
+            $this->saldo += $valor;
+            return true;
+        }
+        return false;
+    }
+
+    public function transfere($valor, Conta $conta) {
+        if ($this->saca($valor)) {
+            $conta->deposita($valor);
+            return true;
+        }
+        return false;
     }
 
 }
