@@ -23,4 +23,11 @@ abstract class ContaInvestimento extends Conta {
         return false;
     }
 
+    public function rende() {
+        $novoSaldo = parent::getSaldo() * (1 + $this->getPercentual());
+        parent::setSaldo($novoSaldo);
+    }
+
+    public abstract function getPercentual();
+
 }
