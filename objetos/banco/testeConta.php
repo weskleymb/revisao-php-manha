@@ -9,15 +9,15 @@ require_once 'classes/BancoDB.class.php';
 <?php
 
 $rafael = new Cliente();
-$rafael->setNome('Rafael');
-$rafael->setEmail('rafaboy@gmail.com');
-$rafael->setCpf('12312312312');
+$rafael->setNome('Hudson');
+$rafael->setEmail('hudson@gmail.com');
+$rafael->setCpf('1565465454');
 
 $contaRafa = new ContaCorrente();
 $contaRafa->setCliente($rafael);
-$contaRafa->setAgencia('1234');
-$contaRafa->setNumero('998547');
-$contaRafa->setSaldo(1000.0);
+$contaRafa->setAgencia('89899');
+$contaRafa->setNumero('54564');
+$contaRafa->setSaldo(500.0);
 
 $banco = new BancoDB();
 //$banco->salva($contaRafa);
