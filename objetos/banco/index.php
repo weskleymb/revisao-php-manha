@@ -1,7 +1,7 @@
 <?php
-require_once 'classes/Cliente.class.php';
-require_once 'classes/ContaCorrente.class.php';
-require_once 'classes/BancoDB.class.php';
+require_once './classes/Cliente.class.php';
+require_once './classes/ContaCorrente.class.php';
+require_once './classes/BancoDB.class.php';
 $cliente = new Cliente();
 $cliente->setNome('');
 $cliente->setCpf('');
@@ -31,7 +31,7 @@ if (isset($_GET['conta']) && !empty($_GET['conta'])) {
         <div class="container">
             <div class="row" style="margin-top: 50px;">
                 <!-- Aqui fica o formulario -->
-                <div class="col-4">
+                <div class="col-5">
                     <form method="post" action="cadastrar-conta.php">
                         <fieldset>
                             <legend>Dados do Cliente</legend>
@@ -47,7 +47,7 @@ if (isset($_GET['conta']) && !empty($_GET['conta'])) {
                         <fieldset>
                             <legend>Dados da Conta</legend>
                             <div class="form-group">
-                                <label for="agencia">Agencia</label>
+                                <label for="agencia">Agência</label>
                                 <input type="text" class="form-control" name="agencia" id="agencia" value="<?=$contaCorrente->getAgencia();?>">
                             </div>
                             <div class="form-group">
@@ -71,9 +71,10 @@ if (isset($_GET['conta']) && !empty($_GET['conta'])) {
                     </form>
                 </div>
                 <!-- Aqui fica a tabela -->
-                <div class="col-8">
+                <div class="col-7">
                     <fieldset>
                         <legend>Lista de Contas</legend>
+                        <br/>
                         <table class="table table-striped table-hover">
                             <?php
                                 $banco = new BancoDB();
@@ -81,11 +82,12 @@ if (isset($_GET['conta']) && !empty($_GET['conta'])) {
                             ?>
                             <thead>
                                 <tr>
-                                    <th>Agencia</th>
+                                    <th>Agência</th>
                                     <th>Conta</th>
                                     <th>Cliente</th>
                                     <th>CPF</th>
                                     <th>Saldo</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,20 +99,20 @@ if (isset($_GET['conta']) && !empty($_GET['conta'])) {
                                         <td><?=$conta->getCliente()->getCpf();?></td>
                                         <td><?=$conta->getSaldo();?></td>
                                         <td>
-                                            <form method="post" action="index.php?conta=<?=$conta->getNumero();?>">
-                                                <input type="hidden" name="conta" value="<?=$conta->getNumero();?>">
-                                                <button type="submit" class="btn btn-primary">
-                                                    <i class="far fa-edit"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <form method="post" action="excluir-conta.php">
-                                                <input type="hidden" name="conta" value="<?=$conta->getNumero();?>">
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
-                                            </form>
+                                            <div class="form-row">
+                                                <form method="post" action="index.php?conta=<?=$conta->getNumero();?>">
+                                                    <input type="hidden" name="conta" value="<?=$conta->getNumero();?>">
+                                                    <button type="submit" class="btn btn-primary btn-sm">
+                                                        <i class="far fa-edit"></i>
+                                                    </button>
+                                                </form>
+                                                <form method="post" action="excluir-conta.php">
+                                                    <input type="hidden" name="conta" value="<?=$conta->getNumero();?>">
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

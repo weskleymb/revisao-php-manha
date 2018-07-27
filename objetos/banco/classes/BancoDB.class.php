@@ -18,25 +18,23 @@ class BancoDB {
     }
 
     public function listaTodas() {
-        $db = fopen(self::BANCO_DADOS, self::LEITURA_APENAS);
-        $str = fread($db, filesize(self::BANCO_DADOS));
-        $contas = explode("->", $str);
         $lista = array();
-        for ($i = 1; $i < count($contas); $i++) {
-            $c = explode("|", $contas[$i]);
-            
-            $conta = new ContaCorrente();
-            $conta->setAgencia($c[0]);
-            $conta->setNumero($c[1]);
-            $conta->setSaldo($c[2]);
-            
-            $cliente = new Cliente();
-            $cliente->setNome($c[3]);
-            $cliente->setCpf(str_replace(chr(10), '', $c[4]));
-            
-            $conta->setCliente($cliente);
-            
-            array_push($lista, $conta);
+        $db = fopen(self::BANCO_DADOS, self::LEITURA_APENAS);
+        if (filesize(self::BANCO_DADOS) > 0) {
+            $str = fread($db, filesize(self::BANCO_DADOS));
+            $contas = explode("->", $str);
+            for ($i = 1; $i < count($contas); $i++) {
+                $c = explode("|", $contas[$i]);      
+                $conta = new ContaCorrente();
+                $conta->setAgencia($c[0]);
+                $conta->setNumero($c[1]);
+                $conta->setSaldo($c[2]);
+                $cliente = new Cliente();
+                $cliente->setNome($c[3]);
+                $cliente->setCpf(str_replace(chr(10), '', $c[4]));
+                $conta->setCliente($cliente);
+                array_push($lista, $conta);
+            }
         }
         fclose($db);
         return $lista;
