@@ -17,38 +17,44 @@ $rows = $statement->fetchAll();
         <div class="container">
             <fieldset>
                 <legend>Endereços</legend>
-                <div class="row">
-                    <div class="col-12 form-group">
-                        <label for="uf">UF</label>
-                        <select class="form-control" name="uf" id="uf" onchange="show_cidades(this.value);">
-                            <option value="" selected disabled>--SELECIONE--</option>
-                            <?php foreach($rows as $row): ?>
-                                <option value="<?=$row['id'];?>">
-                                    <?=$row['nome'];?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                <form>
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            <label for="uf">UF</label>
+                            <select class="form-control" name="uf" id="uf" onchange="show_cidades(this.value);">
+                                <option value="" selected disabled>--SELECIONE--</option>
+                                <?php foreach($rows as $row): ?>
+                                    <option value="<?=$row['id'];?>">
+                                        <?=$row['nome'];?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div id="cidade" class="col-12 form-group">
-                        <label for="cidade">Cidade</label>
-                        <select class="form-control" name="cidade" id="cidade" onchange="show_bairros(this.value);">
-                            <option value="" selected disabled>--SELECIONE--</option>
-                        </select>
+                    <div class="row">
+                        <div id="cidade" class="col-12 form-group">
+                            <label for="cidade">Cidade</label>
+                            <select class="form-control" name="cidade" id="cidade" onchange="show_bairros(this.value);">
+                                <option value="" selected disabled>--SELECIONE--</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div id="cidade" class="col-12 form-group">
-                        <label for="bairro">Bairro</label>
-                        <select class="form-control" name="bairro" id="bairro">
-                            <option value="" selected disabled>--SELECIONE--</option>
-                        </select>
+                    <div class="row">
+                        <div id="cidade" class="col-12 form-group">
+                            <label for="bairro">Bairro</label>
+                            <select class="form-control" name="bairro" id="bairro">
+                                <option value="" selected disabled>--SELECIONE--</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                        </div>
+                    </div>
+                </form>
             </fieldset>
         </div>
-        <script src="js/cidade.js"></script>
-        <script src="js/bairro.js"></script>
+        <script src="js/ajax.js"></script>
     </body>
 </html>
