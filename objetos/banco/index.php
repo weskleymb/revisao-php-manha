@@ -24,6 +24,7 @@ if (isset($_GET['conta']) && !empty($_GET['conta'])) {
         <meta name="author" content="weskley bezerra">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Banco Senac</title>
+        <link rel="icon" href="img/senac.png" type="image/png" sizes="16x16">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     </head>
@@ -62,10 +63,16 @@ if (isset($_GET['conta']) && !empty($_GET['conta'])) {
                         <br>
                         <div class="form-row">
                             <div class="col-6">
-                                <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
+                                <button type="submit" class="btn btn-success btn-block">
+                                    <i class="far fa-save"></i>
+                                    Salvar
+                                </button>
                             </div>
                             <div class="col-6">
-                                <button type="reset" class="btn btn-danger btn-block">Limpar</button>
+                                <button type="reset" class="btn btn-danger btn-block">
+                                    <i class="fas fa-undo"></i>
+                                    Limpar
+                                </button>
                             </div>
                         </div>
                     </form>
